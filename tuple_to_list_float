@@ -1,0 +1,25 @@
+# By running the sample of calc_sum, calc_sum(0.1,0.2,0.3)
+# The function returns 0.6000000000001
+# It may caused by the float type storage in the python
+# One idea cames out to transform every input into float type so maybe it could fix the problem
+#### Failed
+
+# In order to transform the tuple to list, I used the map & lambda function to transform every input to float
+
+def calc_sum(*numbers):
+    sum = 0
+    num = list(numbers)    # transform tuple to list
+    num = list(map(lambda x: float(x), num))    # use the map and lambda to transform every element in num
+    print(type(num))    # the type of new num: class:list
+    print(type(num[0]))    # the type of elements in num: class:float
+    for n in numbers:
+        sum += n
+    print(num)
+    return sum
+
+if __name__ == '__main__':
+    testfun = calc_sum
+    print(testfun(1,2,3,4))
+    print(testfun(-1,0,0.5))
+    print(testfun(0.1,0.2,0.3))
+    print("OK")
